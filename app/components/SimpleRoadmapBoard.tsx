@@ -740,7 +740,9 @@ export default function SimpleRoadmapBoard() {
                                 )}
                                 <span>등록: {new Date(version.created_on).toLocaleDateString('ko-KR')}</span>
                                 <a
-                                  href={`https://projects.rsupport.com/projects/${version.project?.identifier}/roadmap`}
+                                  href={`https://projects.rsupport.com/projects/${version.project?.id}/roadmap`}
+                                  /* href={`https://projects.rsupport.com/projects/${version.project?.identifier}/roadmap`} */
+                                 
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="text-blue-600 hover:text-blue-800"
