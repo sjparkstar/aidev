@@ -896,7 +896,7 @@ export default function SimpleRoadmapBoard() {
               )}
             </div>
           ) : (
-            {/* 기존 기본 콘텐츠 */}
+            /* 기존 기본 콘텐츠 */
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <div className="text-center py-12">
                 <h3 className="text-lg font-medium text-gray-900 mb-2">{currentMenuInfo.title}</h3>
