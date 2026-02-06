@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface Version {
   id: number;
@@ -32,10 +32,10 @@ interface Issue {
 }
 
 interface RoadmapBoardProps {
-  projectIdentifier: string;
+  projectIdentifier?: string;
 }
 
-export default function RoadmapBoard({ projectIdentifier }: RoadmapBoardProps) {
+export default function RoadmapBoard({ projectIdentifier = '2024_qa_sebj' }: RoadmapBoardProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [versions, setVersions] = useState<Version[]>([]);
   const [selectedVersion, setSelectedVersion] = useState<Version | null>(null);
@@ -43,6 +43,15 @@ export default function RoadmapBoard({ projectIdentifier }: RoadmapBoardProps) {
   const [loading, setLoading] = useState(true);
   const [issuesLoading, setIssuesLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  // 모바일 반응형 상태
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  
+  // 터치 제스처 관련
+  const touchStartX = useRef<number>(0);
+  const touchStartY = useRef<number>(0);
 
   // 버전 목록 가져오기
   useEffect(() => {
